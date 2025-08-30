@@ -41,7 +41,7 @@
         </div>
         <p class="mt-6 text-blue-800 font-semibold text-sm">&copy; 2025 Pic Cleaning Services</p>
       </div>
-
+  <form id="contactForm">
       <!-- Right Panel (Form) -->
       <div class="py-10 px-6 sm:px-10">
         <h2 class="text-3xl font-extrabold text-gray-800 mb-2">We’d love to help</h2>
@@ -50,23 +50,23 @@
         <form class="space-y-6" onsubmit="handleSubmit(event)">
           <!-- Name Fields -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input type="text" placeholder="First Name" required class="input-field border border-gray-300 rounded px-3 py-2" />
-            <input type="text" placeholder="Last Name" required class="input-field border border-gray-300 rounded px-3 py-2" />
+            <input type="text" id="fname" placeholder="First Name" required class="input-field border border-gray-300 rounded px-3 py-2" />
+            <input type="text" id="lname" placeholder="Last Name" required class="input-field border border-gray-300 rounded px-3 py-2" />
 
           </div>
 
           <!-- Email --><!-- Email -->
-             <input type="email" placeholder="Email Address" required class="input-field border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+             <input type="email" id="email" placeholder="Email Address" required class="input-field border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
 
           <!-- Address -->
-            <input type="text" placeholder="Enter your address" required class="input-field border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <input type="text" id="address" placeholder="Enter your address" required class="input-field border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
 
           <!-- Phone -->
-            <input type="tel" placeholder="Phone Number" required class="input-field border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <input type="tel" id="phone" placeholder="Phone Number" required class="input-field border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
 
           <!-- Dropdowns -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <select required class="input-field border border-gray-300 bg-white text-gray-700 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <select required id="room" class="input-field border border-gray-300 bg-white text-gray-700 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option disabled selected>Select Room Size</option>
             <option>1 Bedroom</option>
             <option>2 Bedrooms</option>
@@ -74,7 +74,7 @@
             <option>Commercial Space</option>
           </select>
 
-          <select required class="input-field border border-gray-300 bg-white text-gray-700 rounded px-3 py-2 w-full focus:outline-none     focus:ring-2 focus:ring-blue-500">
+          <select id="state" required class="input-field border border-gray-300 bg-white text-gray-700 rounded px-3 py-2 w-full focus:outline-none     focus:ring-2 focus:ring-blue-500">
            <option disabled selected>Select Your State</option>
            <option>Enugu</option>
            <option>Abia</option>
@@ -84,7 +84,7 @@
           </div>
 
          <!-- Message -->
-             <textarea rows="4" placeholder="Leave us a message..." class="input-field border border-gray-300 rounded px-3 py-2 w-full resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+             <textarea rows="4" id="message" placeholder="Leave us a message..." class="input-field border border-gray-300 rounded px-3 py-2 w-full resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
           <!-- Checkbox -->
           <div class="flex items-start">
             <input type="checkbox" id="policy" class="mt-1 mr-3 accent-blue-600" required>
@@ -101,6 +101,7 @@
       </div>
     </div>
   </div>
+ </form>
 
             <!-- Success Modal -->
        <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
@@ -132,6 +133,36 @@
       if (!modal.classList.contains('hidden') && !content.contains(e.target)) {
         closeModal();
       }
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      let fname = document.getElementById('fname').value;
+      let lname = document.getElementById('lname').value;
+      let email = document.getElementById('email').value;
+      let address = document.getElementById('address').value;
+      let phone = document.getElementById('phone').value;
+      let room = document.getElementById('room').value;
+      let state = document.getElementById('state').value;
+      let message = document.getElementById('message').value;
+      let policy = document.getElementById('policy').checked;
+      if (!policy) {
+        alert('You must agree to the privacy policy.');
+        return;
+      }
+
+      let url = "https://wa.me/2349044506039?text="
+      + "First Name : " + fname + "%0a"
+      + "Last Name : " + lname + "%0a"
+      + "Email : " + email + "%0a"
+      + "Address : " + address + "%0a"
+      + "Phone : " + phone + "%0a"
+      + "Room Size : " + room + "%0a"
+      + "State : " + state + "%0a"
+      + "Message : " + message; 
+      
+      window.open(url, '_blank').focus();
     });
   </script>
 
