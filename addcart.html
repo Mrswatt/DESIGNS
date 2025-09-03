@@ -1,198 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Responsive Chair Shop</title>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>add-cart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white font-sans">
+<body class="bg-gray-100 font-sans">
 
   <!-- Header -->
-  <header class="flex justify-between items-center p-4 border-b">
-    <h1 class="text-xl font-semibold">PRODUCT LIST</h1>
-    <div class="relative">
-      <i class="fas fa-shopping-cart text-xl"></i>
-      <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">17</span>
-    </div>
+  <header class="bg-white shadow-md p-4 flex justify-between sticky top-0 z-50 items-center">
+    <h1 class="text-2xl font-bold">🛒 My Shop</h1>
+    <button id="cart-btn" class="relative bg-blue-500 text-white px-4 py-2 rounded-lg">
+      Cart
+      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-xs px-2 py-1 text-xl rounded-full">0</span>
+    </button>
   </header>
 
-  <!-- Main -->
-  <main class="flex flex-col lg:flex-row">
+  <!-- Product Grid -->
+  <main class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-gray-300 gap-6">
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.51 PM(1).jpeg" class="rounded-md mb-3 m-auto w-40 h-60">
+      <h2 class="text-lg font-semibold">Product 1</h2>
+      <p class="text-gray-600">₦3500</p>
+      <button onclick="addToCart('Product 1', 3500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
 
-    <!-- Product Grid -->
-    <section class="w-full lg:w-2/3 p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-     <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-       <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-       <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-        <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-        <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-         <img src="./images/locals.jpeg" alt="Chair"
-         class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-       <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-        <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-        <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-        <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-       <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
-       <!-- Product Card -->
-      <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-lg">
-       <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain" />
-        <h2 class="font-semibold text-sm">LD01 LOUNGE CHAIR</h2>
-        <p class="text-gray-600">$200</p>
-        <button class="bg-black text-white text-sm px-4 py-1 mt-2 rounded transform transition duration-300 hover:bg-gray-800 active:scale-95">Add To Cart</button>
-      </div>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.51 PM(2).jpeg" class="rounded-md mb-3 m-auto w-60 h-75 object-cover">
+      <h2 class="text-lg font-semibold">Product 2</h2>
+      <p class="text-gray-600">₦6000</p>
+      <button onclick="addToCart('Product 2', 6000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
 
-      <!-- products card... -->
-    </section>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.52 PM(1).jpeg" class="rounded-md mb-3 m-auto w-60 h-60">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦3000</p>
+      <button onclick="addToCart('Product 3', 3000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
 
-    <!-- Cart Sidebar -->
-    <aside class="w-full lg:w-1/3 bg-gray-900 text-white flex flex-col">
-      <div class="p-4 border-b border-gray-700">
-        <h2 class="text-xl font-semibold">Shopping Cart</h2>
-      </div>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.52 PM.jpeg" class="rounded-md mb-3 m-auto w-60 h-60 object-cover">
+      <h2 class="text-lg font-semibold">Towel</h2>
+      <p class="text-gray-600">₦2000</p>
+      <button onclick="addToCart('towel ', 2000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
 
-      <div class="flex-1 overflow-y-auto p-4 space-y-4">
-        <!-- Cart Item -->
-        <div class="flex items-center justify-between hover:bg-gray-800 p-2 rounded transition duration-300">
-          <img src="https://via.placeholder.com/40" class="rounded" />
-          <div class="flex-1 px-3">
-            <p class="text-sm">LD05 LOUNGE CHAIR</p>
-            <p class="text-sm">$420</p>
-          </div>
-          <div class="flex items-center space-x-2">
-            <span class="px-2 text-sm">2</span>
-            <button class="text-xl transform transition hover:scale-110 active:scale-95">&gt;</button>
-          </div>
-        </div>
-         <!-- Cart Item -->
-        <div class="flex items-center justify-between hover:bg-gray-800 p-2 rounded transition duration-300">
-          <img src="https://via.placeholder.com/40" class="rounded" />
-          <div class="flex-1 px-3">
-            <p class="text-sm">LD05 LOUNGE CHAIR</p>
-            <p class="text-sm">$420</p>
-          </div>
-          <div class="flex items-center space-x-2">
-            <span class="px-2 text-sm">2</span>
-            <button class="text-xl transform transition hover:scale-110 active:scale-95">&gt;</button>
-          </div>
-        </div>
-         <!-- Cart Item -->
-        <div class="flex items-center justify-between hover:bg-gray-800 p-2 rounded transition duration-300">
-          <img src="https://via.placeholder.com/40" class="rounded" />
-          <div class="flex-1 px-3">
-            <p class="text-sm">LD05 LOUNGE CHAIR</p>
-            <p class="text-sm">$420</p>
-          </div>
-          <div class="flex items-center space-x-2">
-            <span class="px-2 text-sm">2</span>
-            <button class="text-xl transform transition hover:scale-110 active:scale-95">&gt;</button>
-          </div>
-        </div>
-         <!-- Cart Item -->
-        <div class="flex items-center justify-between hover:bg-gray-800 p-2 rounded transition duration-300">
-         <img src="./images/locals.jpeg" alt="Chair"
-     class="mb-2 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain" />
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.53 PM(1).jpeg" class="rounded-md mb-3 m-auto w-60 h-60 object-cover">
+      <h2 class="text-lg font-semibold">spochers</h2>
+      <p class="text-gray-600">₦2500</p>
+      <button onclick="addToCart('book 6', 2500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
 
-          <div class="flex-1 px-3">
-            <p class="text-sm">LD05 LOUNGE CHAIR</p>
-            <p class="text-sm">$420</p>
-          </div>
-          <div class="flex items-center space-x-2">
-            <span class="px-2 text-sm">2</span>
-            <button class="text-xl transform transition hover:scale-110 active:scale-95">&gt;</button>
-          </div>
-        </div>
-        
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.54 PM(1).jpeg" class="rounded-md mb-3 m-auto w-60 h-60">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦5000</p>
+      <button onclick="addToCart('Product', 500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
 
-        <!-- Repeat for more items -->
-      </div>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.53 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦7000</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
 
-      <!-- Cart Footer Buttons -->
-      <div class="flex border-t border-gray-700">
-        <button class="w-1/2 p-4 bg-gray-800 text-white transform transition hover:bg-gray-700 active:scale-95">CLOSE</button>
-        <button class="w-1/2 p-4 bg-yellow-500 text-black font-semibold transform transition hover:bg-yellow-400 active:scale-95">CHECK OUT</button>
-      </div>
-    </aside>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.55 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦2000</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
 
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.56 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.43 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦2000</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.49 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦1200</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.47 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦700</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.46 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.16 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto object-cover">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦3000</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.15 PM.jpeg" class="rounded-md mb-3 w-60 h-60 object-cover m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.15 PM(2).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.14 PM(1).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Close Up</h2>
+      <p class="text-gray-600">₦1800</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.14 PM(2).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.52 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Good Mama</h2>
+      <p class="text-gray-600">₦2000</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.13 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Mub</h2>
+      <p class="text-gray-600">₦5500</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.15 PM(1).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.24.28 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Colgate</h2>
+      <p class="text-gray-600">₦2000</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.51 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">ToothBrush</h2>
+      <p class="text-gray-600">₦300</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.50 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Broom</h2>
+      <p class="text-gray-600">₦1000</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.49 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.48 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.39 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.41 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦3000</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.45 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.44 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold"><title>soup</title> Baby & Me</h2>
+      <p class="text-gray-600">₦700</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.40 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.42 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+     <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.37 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+     <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.57 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+     <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.56 PM(1).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+    </div>
+
+     <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.54 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+     </div>
+
+     <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.49 PM(1).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+     </div>
+
+     <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.52 PM(1).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Viva plus</h2>
+      <p class="text-gray-600">₦2500</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+     </div>
+
+     <div class="bg-white p-4 rounded-lg shadow-md">
+      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.14 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
+      <h2 class="text-lg font-semibold">Product 3</h2>
+      <p class="text-gray-600">₦20</p>
+      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
+     </div>
+    
   </main>
+
+  <!-- Cart Sidebar -->
+  <aside id="cart" class="fixed top-12 right-0 w-80 h-full bg-white shadow-lg p-6 transform translate-x-full transition-transform duration-300">
+    <h2 class="text-xl font-bold mb-4">ADD LIST</h2>
+    <ul id="cart-items" class="space-y-2"></ul>
+    <p class="mt-4 font-semibold">Total: ₦<span id="cart-total">0</span></p>
+    <button id="checkout" class="mt-4 w-full bg-green-500 text-white px-4 py-2 rounded-lg">Checkout</button>
+
+    <!-- back to cart buttton -->
+    <button id="back-to-shop" class="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded-lg">Back to Shop</button>
+  </aside>
+
+  <script>
+    const cartBtn = document.getElementById("cart-btn");
+    const cart = document.getElementById("cart");
+    const cartItemsList = document.getElementById("cart-items");
+    const cartCount = document.getElementById("cart-count");
+    const cartTotal = document.getElementById("cart-total");
+    const checkoutBtn = document.getElementById("checkout");
+
+    let cartItems = [];
+
+    cartBtn.addEventListener("click", () => {
+      cart.classList.toggle("translate-x-full");
+    });
+
+    function addToCart(name, price) {
+      const item = cartItems.find(i => i.name === name);
+      if (item) {
+        item.quantity++;
+      } else {
+        cartItems.push({ name, price, quantity: 1 });
+      }
+      updateCart();
+    }
+
+    function updateCart() {
+      cartItemsList.innerHTML = "";
+      let total = 0;
+      cartItems.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const li = document.createElement("li");
+        li.className = "flex justify-between items-center border-b pb-2";
+        li.innerHTML = `
+          <span>${item.name} x${item.quantity}</span>
+          <span class="flex items-center gap-2">
+            ₦${item.price * item.quantity}
+            <button onclick="removeFromCart(${index})" class="text-red-500 text-sm">✕</button>
+          </span>
+        `;
+        cartItemsList.appendChild(li);
+      });
+      cartCount.textContent = cartItems.reduce((sum, i) => sum + i.quantity, 0);
+      cartTotal.textContent = total;
+    }
+
+    function removeFromCart(index) {
+      cartItems.splice(index, 1);
+      updateCart();
+    }
+
+    // Checkout to WhatsApp
+    checkoutBtn.addEventListener("click", () => {
+      if (cartItems.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+//       message += `- ${item.name} x${item.quantity} = ₦${item.price * item.quantity}%0A`;
+// message += `------------------%0ATotal: ₦${total}`;
+      
+      let message = "Hello, I would like to order:%0A";
+      cartItems.forEach(item => {
+        message += `- ${item.name} x${item.quantity} = ₦${item.price * item.quantity}%0A`;
+      });
+      message += `------------------%0ATotal: ₦${cartTotal.textContent}`;
+      
+      // Replace with your WhatsApp number (with country code, no + or spaces)
+      let phone = "2349044506039";  
+      let url = `https://wa.me/${phone}?text=${message}`;
+      
+      window.open(url, "_blank");
+    });
+
+    document.getElementById("back-to-shop").addEventListener("click", () => {
+      cart.classList.add("translate-x-full");
+    });
+  </script>
 
 </body>
 </html>
