@@ -37,40 +37,40 @@
       <div class="space-y-4 text-gray-700 text-sm">
         <p><strong>📞 Phone:</strong> +234 816 364 5085<br>+234 916 803 6711<br>+234 802 866 2540<br>+234 814 842 3012</p>
         <p><strong>✉️ Email:</strong> Piccleaningservices01@gmail.com</p>
-        <p><strong>📍 Address:</strong> 123 Clean Street, Enugu, Nigeria</p>
+        <p><strong>📍 Address:</strong> No 1 Anichiebe obodo crescent Loma Linda extension,Maryland Enugu state, Nigeria</p>
       </div>
 
       <!-- Optional: Social Media -->
       <div class="flex space-x-4 pt-4">
-        <a href="#" class="text-blue-600 hover:text-blue-800">Facebook</a>
+        <a href="https://www.fb.com/L/6Lp1kJRRR" class="text-blue-600 hover:text-blue-800">Facebook</a>
         <a href="#" class="text-black hover:text-black">Tiktok</a>
         <a href="https://wa.me/message/SINPAHGKAF7IG1" target="_blank" class="text-green-500 hover:text-green-700">WhatsApp</a>
-        <a href="#" class="text-pink-500 hover:text-pink-700">Instagram</a>
+        <a href="https://www.instagram.com/pic.cleaning_services?utm_source=qr&igsh=a2fxnnzjbgxsdjlj" class="text-pink-500 hover:text-pink-700">Instagram</a>
       </div>
     </div>
 
     <!-- Contact Form -->
-    <div class="bg-white p-6 rounded-lg shadow-lg">
-      <form class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" placeholder="First Name" class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400" required>
-          <input type="text" placeholder="Last Name" class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400" required>
-        </div>
-        <input type="email" placeholder="Email Address" class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400" required>
-        <input type="text" placeholder="Phone Number" class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400">
-        <textarea rows="4" placeholder="Your message..." class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400" required></textarea>
-        
-        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md transition">
-          Send Message
-        </button>
-      </form>
+   <div class="bg-white p-6 rounded-lg shadow-lg max-w-xl mx-auto">
+  <form id="whatsappForm" class="space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="text" id="firstName" placeholder="First Name" class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400" required>
+      <input type="text" id="lastName" placeholder="Last Name" class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400" required>
     </div>
+    <input type="email" id="email" placeholder="Email Address" class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400" required>
+    <input type="text" id="phone" placeholder="Phone Number" class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400">
+    <textarea id="message" rows="4" placeholder="Your message..." class="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-400" required></textarea>
+
+    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md transition">
+      Send via WhatsApp
+    </button>
+  </form>
+</div>
   </main>
 
   <!-- Optional: Google Map -->
   <section class="w-full">
     <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!..." 
+      src="https://www.google.com/maps?q=No%201%20Anichiebe%20obodo%20crescent%20Loma%20Linda%20extension,Maryland%20Enugu%20state,Nigeria&output=embed" 
       width="100%" 
       height="350" 
       allowfullscreen="" 
@@ -83,6 +83,43 @@
   <footer class="bg-gray-100 text-center text-sm py-6 mt-10">
     &copy; 2025 Happy Cleans. All rights reserved.
   </footer>
+
+<script>
+  const form = document.getElementById("whatsappForm");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const fullMessage = `Hello, I have a request:\n\n` +
+      `Name: ${firstName} ${lastName}\n` +
+      `Email: ${email}\n` +
+      `Phone: ${phone}\n` +
+      `Message: ${message}`;
+
+    const encodedMessage = encodeURIComponent(fullMessage);
+    const phoneNumber = "2348163645085";
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+
+    // Open WhatsApp
+    window.open(whatsappURL, "_blank");
+
+    // Clear the form
+    form.reset();
+
+    // Refresh the page after a delay
+    setTimeout(() => {
+      loader.classList.add("hidden");
+      window.location.reload();
+    }, 2000); // Adjust delay if needed
+  });
+</script>
 
 </body>
 </html>

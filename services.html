@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | Prima Tech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in {
+      animation: fadeInUp 0.6s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <div class="container mx-auto mt-12 px-4">
+    <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-800 fade-in">✨ Our Services</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Home Cleaning -->
+      <div class="bg-white border rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition duration-300 transform hover:scale-105 fade-in">
+        <img src="./images/home-cleaning.jpeg" alt="Home Cleaning" class="w-20 h-20 mx-auto mb-4 rounded-md object-cover">
+        <h3 class="text-xl font-semibold text-cyan-500 mb-2">Home Cleaning</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          Experience the art of fine home care with our premium cleaning services.
+          We go beyond basic cleaning — focusing on details and customer satisfaction.
+        </p>
+        <a href="https://wa.me/2348163645085?text=Hi%2C%20I%27d%20like%20to%20book%20a%20home%20cleaning" target="_blank">
+          <button class="bg-cyan-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-600 transition">Book Now</button>
+        </a>
+      </div>
+
+      <!-- Industrial Cleaning -->
+      <div class="bg-white border rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition duration-300 transform hover:scale-105 fade-in">
+        <img src="./images/industrial.jpg" alt="Industrial Cleaning" class="w-20 h-20 mx-auto mb-4 rounded-md object-cover">
+        <h3 class="text-xl font-semibold text-cyan-500 mb-2">Industrial Cleaning</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          Precision and professionalism in deep cleaning. Safe, efficient, and inspection-ready for your industrial space.
+        </p>
+        <a href="industrial.html">
+          <button class="bg-cyan-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-600 transition">Book Now</button>
+        </a>
+      </div>
+
+      <!-- Cleaning Products -->
+      <div class="bg-white border rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition duration-300 transform hover:scale-105 fade-in">
+        <img src="./images/product.jpg" alt="Cleaning Products" class="w-20 h-20 mx-auto mb-4 rounded-md object-cover">
+        <h3 class="text-xl font-semibold text-cyan-500 mb-2">Cleaning Products</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          Discover effective & eco-friendly cleaning products.<br>
+          - Multi-purpose & skin-safe<br>
+          - Fast delivery & bulk orders
+        </p>
+        <a href="addcart.html">
+          <button class="bg-cyan-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-600 transition">Shop Here</button>
+        </a>
+      </div>
+
+      <!-- Industrial Equipment -->
+      <div class="bg-white border rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition duration-300 transform hover:scale-105 fade-in">
+        <img src="./images/industrial-cleaning.jpg" alt="Industrial Equipment" class="w-20 h-20 mx-auto mb-4 rounded-md object-cover">
+        <h3 class="text-xl font-semibold text-cyan-500 mb-2">Industrial Equipment</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          Rent or buy high-performance equipment built for durability and cleaning power.
+        </p>
+        <a href="https://wa.me/2348163645085?text=Hi%2C%20I%27d%20like%20to%20rent%20an%20industrial%20Equipment" target="_blank">
+          <button class="bg-cyan-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-600 transition">For More</button>
+        </a>
+      </div>
+
+      <!-- Laundry -->
+      <div class="bg-white border rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition duration-300 transform hover:scale-105 fade-in">
+        <img src="./images/laundry-sticker-png.png" alt="Laundry" class="w-20 h-20 mx-auto mb-4 rounded-md object-cover">
+        <h3 class="text-xl font-semibold text-cyan-500 mb-2">Laundry</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          Premium laundry service that delivers freshness, precision, and convenience — crisp clothes without lifting a finger.
+        </p>
+        <a href="https://wa.me/2348163645085?text=Hi%2C%20I%27d%20like%20to%20book%20a%20laundry" target="_blank">
+          <button class="bg-cyan-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-600 transition">Book Now</button>
+        </a>
+      </div>
+
+      <!-- Prima Tech World (Modal Trigger) -->
+      <div onclick="toggleModal()" class="cursor-pointer bg-white border rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition duration-300 transform hover:scale-105 fade-in">
+        <img src="./images/logo.jpg" alt="Prima Tech World" class="w-20 h-20 mx-auto mb-4 rounded-md object-cover">
+        <h3 class="text-xl font-semibold text-cyan-500 mb-2">Prima Tech World</h3>
+        <p class="text-gray-600 text-sm mb-4">Click to learn more.</p>
+        <button class="bg-cyan-500 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-600 transition">Coming Soon</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full text-center relative">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">👨‍💻 Prima Tech World</h2>
+      <p class="text-gray-600 mb-6">We're working on something amazing. Stay tuned!</p>
+      <button onclick="toggleModal()" class="bg-cyan-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function toggleModal() {
+      const modal = document.getElementById("modal");
+      modal.classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>

@@ -1,358 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>add-cart</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Shop – Mobile Friendly</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
 
   <!-- Header -->
-  <header class="bg-white shadow-md p-4 flex justify-between sticky top-0 z-50 items-center">
-    <h1 class="text-2xl font-bold">🛒 My Shop</h1>
-    <button id="cart-btn" class="relative bg-blue-500 text-white px-4 py-2 rounded-lg">
+  <header class="bg-white shadow-md p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center sticky top-0 z-50 gap-3">
+    <h1 class="text-xl sm:text-2xl font-bold text-center sm:text-left">🛒 My Shop</h1>
+    <!-- Search -->
+    <div class="relative w-full sm:w-1/2">
+      <input id="search" type="text" placeholder="Search products…"
+             class="w-full px-4 py-2 text-base border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+      <span class="absolute right-3 top-2.5 text-gray-500">🔍</span>
+    </div>
+    <!-- Cart button -->
+    <button id="cart-btn" class="relative bg-blue-500 text-white px-4 py-2 text-base rounded-lg hover:bg-blue-600 transition mt-2 sm:mt-0">
       Cart
-      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-xs px-2 py-1 text-xl rounded-full">0</span>
+      <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">0</span>
     </button>
   </header>
 
+  <!-- Quick Order from Search -->
+  <div id="search-result" class="hidden p-4 bg-white shadow-md mx-3 sm:mx-6 mt-3 rounded-lg">
+    <h2 class="text-lg font-semibold mb-2">Quick Order</h2>
+    <p id="search-product" class="text-gray-700"></p>
+    <div class="flex gap-2 mt-3">
+      <input id="quick-qty" type="number" value="1" min="1" class="w-20 border rounded px-2 py-1 text-center" />
+      <button id="order-now" class="flex-1 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+        Order via WhatsApp
+      </button>
+    </div>
+  </div>
+
   <!-- Product Grid -->
-  <main class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-gray-300 gap-6">
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.51 PM(1).jpeg" class="rounded-md mb-3 m-auto w-40 h-60">
-      <h2 class="text-lg font-semibold">CIF</h2>
-      <p class="text-gray-600">₦5000</p>
-      <button onclick="addToCart('CIF', 5000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.51 PM(2).jpeg" class="rounded-md mb-3 m-auto w-60 h-75 object-cover">
-      <h2 class="text-lg font-semibold">Bathroom mat</h2>
-      <p class="text-gray-600">₦6000</p>
-      <button onclick="addToCart('Bathroom mat', 6000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.52 PM(1).jpeg" class="rounded-md mb-3 m-auto w-60 h-60">
-      <h2 class="text-lg font-semibold">Toilet brush</h2>
-      <p class="text-gray-600">₦2500</p>
-      <button onclick="addToCart('Toilet brush', 2500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.52 PM.jpeg" class="rounded-md mb-3 m-auto w-60 h-60 object-cover">
-      <h2 class="text-lg font-semibold">Microfiber Towel</h2>
-      <p class="text-gray-600">₦2000</p>
-      <button onclick="addToCart('Microfiber Towel', 2000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.53 PM(1).jpeg" class="rounded-md mb-3 m-auto w-60 h-60 object-cover">
-      <h2 class="text-lg font-semibold">spochers</h2>
-      <p class="text-gray-600">₦2500</p>
-      <button onclick="addToCart('book 6', 2500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.54 PM(1).jpeg" class="rounded-md mb-3 m-auto w-60 h-60">
-      <h2 class="text-lg font-semibold">Long brush and parker</h2>
-      <p class="text-gray-600">₦5000</p>
-      <button onclick="addToCart('Long brush and parker', 5000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.53 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Windex</h2>
-      <p class="text-gray-600">₦7000</p>
-      <button onclick="addToCart('Windex', 7000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.55 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Parker</h2>
-      <p class="text-gray-600">₦2000</p>
-      <button onclick="addToCart('Parker', 2000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.56 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Scrubbing brush</h2>
-      <p class="text-gray-600">₦3000</p>
-      <button onclick="addToCart('Scrubbing brush', 3000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.43 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Shaving stick one pack</h2>
-      <p class="text-gray-600">₦1500</p>
-      <button onclick="addToCart('Shaving stick one pack', 1500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.49 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Colgate toothpaste</h2>
-      <p class="text-gray-600">₦2000</p>
-      <button onclick="addToCart('Colgate toothpaste', 1200)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.47 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Cutton bud</h2>
-      <p class="text-gray-600">₦700</p>
-      <button onclick="addToCart('Cutton bud', 700)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.46 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Bathing glove</h2>
-      <p class="text-gray-600">₦4000</p>
-      <button onclick="addToCart('Bathing glove', 4000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.16 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto object-cover">
-      <h2 class="text-lg font-semibold">Angel wipes</h2>
-      <p class="text-gray-600">₦2000</p>
-      <button onclick="addToCart('Angel wipes', 2000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.15 PM.jpeg" class="rounded-md mb-3 w-60 h-60 object-cover m-auto">
-      <h2 class="text-lg font-semibold">Morning fresh <br>(small size)</h2>
-      <p class="text-gray-600">₦1500</p>
-      <button onclick="addToCart('Morning fresh', 1500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.15 PM(2).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Bloosom polish</h2>
-      <p class="text-gray-600">₦3000</p>
-      <button onclick="addToCart('Bloosom polish', 3000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.14 PM(1).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Oral B</h2>
-      <p class="text-gray-600">₦1900</p>
-      <button onclick="addToCart('Oral B', 1900)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.14 PM(2).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Very hair removal cream</h2>
-      <p class="text-gray-600">₦4000</p>
-      <button onclick="addToCart('Very hair removal cream', 4000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.52 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Basket</h2>
-      <p class="text-gray-600">₦6000</p>
-      <button onclick="addToCart('Basket', 6000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.13 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Close up toothpaste</h2>
-      <p class="text-gray-600">₦1800</p>
-      <button onclick="addToCart('Close up toothpaste', 1800)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.15 PM(1).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Morning fresh <br>(big size)</h2>
-      <p class="text-gray-600">₦3500</p>
-      <button onclick="addToCart('Morning fresh(b)', 3500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.24.28 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Good Mama Detergent</h2>
-      <p class="text-gray-600">₦2000</p>
-      <button onclick="addToCart('Good Mama Detergent', 2000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.51 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Strong Mop</h2>
-      <p class="text-gray-600">₦5000</p>
-      <button onclick="addToCart('Strong Mop', 5000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.50 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Floss</h2>
-      <p class="text-gray-600">₦1500</p>
-      <button onclick="addToCart('Floss', 1500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.49 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Product 3</h2>
-      <p class="text-gray-600">₦20</p>
-      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.48 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Brush</h2>
-      <p class="text-gray-600">₦300</p>
-      <button onclick="addToCart('Brush', 300)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.39 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Broom</h2>
-      <p class="text-gray-600">₦1000</p>
-      <button onclick="addToCart('Broom', 1000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.41 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Peg Set</h2>
-      <p class="text-gray-600">₦2500</p>
-      <button onclick="addToCart('Peg set', 2500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.45 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Toilet Brush</h2>
-      <p class="text-gray-600">₦5000</p>
-      <button onclick="addToCart('Toilet brush', 5000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.44 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Tissue Paper</h2>
-      <p class="text-gray-600">₦700</p>
-      <button onclick="addToCart('Tissue Paper', 700)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.40 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Long Brush</h2>
-      <p class="text-gray-600">₦3000</p>
-      <button onclick="addToCart('Long Brush', 3000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-    <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.42 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">unknown</h2>
-      <p class="text-gray-600">₦700</p>
-      <button onclick="addToCart('Baby&Me', 700)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-     <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.37 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Baby&Me</h2>
-      <p class="text-gray-600">₦700</p>
-      <button onclick="addToCart('Baby&Me', 700)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-     <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.57 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Harpic</h2>
-      <p class="text-gray-600">₦700</p>
-      <button onclick="addToCart('Harpic', 7000)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-     <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.56 PM(1).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Hypo</h2>
-      <p class="text-gray-600">₦3500</p>
-      <button onclick="addToCart('Hypo', 3500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-    </div>
-
-     <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 1.46.54 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Iron sponge</h2>
-      <p class="text-gray-600">₦500</p>
-      <button onclick="addToCart('Iron sponge', 500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-     </div>
-
-     <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.49 PM(1).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Bathing sponge</h2>
-      <p class="text-gray-600">₦1500</p>
-      <button onclick="addToCart('Iron sponge', 1500)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-     </div>
-
-     <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.19.52 PM(1).jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">Viva plus</h2>
-      <p class="text-gray-600">₦2500</p>
-      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-     </div>
-
-     <div class="bg-white p-4 rounded-lg shadow-md">
-      <img src="./images/WhatsApp Image 2025-08-30 at 8.22.14 PM.jpeg" class="rounded-md mb-3 w-60 h-60 m-auto">
-      <h2 class="text-lg font-semibold">MYMY Toothbrush</h2>
-      <p class="text-gray-600">₦1800</p>
-      <button onclick="addToCart('Product 3', 20)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg w-full">Add to Cart</button>
-     </div>
-    
+  <main id="product-grid" class="p-3 sm:p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6 bg-gray-200">
+    <!-- Cards injected by JS -->
   </main>
 
-  <!-- Cart Sidebar -->
-  <aside id="cart" class="fixed top-12 right-0 w-80 h-full bg-white shadow-lg p-6 transform translate-x-full transition-transform duration-300">
-    <h2 class="text-xl font-bold mb-4">ADD LIST</h2>
-    <ul id="cart-items" class="space-y-2"></ul>
-    <p class="mt-4 font-semibold">Total: ₦<span id="cart-total">0</span></p>
-    <button id="checkout" class="mt-4 w-full bg-green-500 text-white px-4 py-2 rounded-lg">Checkout</button>
+  <!-- Request Product -->
+  <section class="p-6 text-center">
+    <h2 class="text-lg font-semibold mb-3">Can’t find what you’re looking for?</h2>
+    <button id="request-product" class="bg-blue-200 text-white px-6 py-3 rounded-lg hover:bg-purple-600 w-full sm:w-auto">
+      Request a Product
+    </button>
 
-    <!-- back to cart buttton -->
-    <button id="back-to-shop" class="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded-lg">Back to Shop</button>
+    <!-- Hidden form -->
+    <div id="request-form" class="hidden mt-4 w-full sm:max-w-md mx-auto bg-white p-4 rounded-lg shadow-md">
+      <input id="request-input" type="text" placeholder="Enter product name…"
+             class="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-purple-400 focus:outline-none mb-3" />
+      <button id="send-request" class="w-full bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+        Send Request via WhatsApp
+      </button>
+    </div>
+  </section>
+
+  <!-- Cart (mobile = bottom drawer, desktop = right sidebar) -->
+  <aside id="cart" class="fixed sm:top-12 sm:right-0 bottom-0 sm:bottom-auto w-full sm:w-80 h-[72%] sm:h-full bg-white shadow-lg p-6 transform translate-y-full sm:translate-y-0 sm:translate-x-full transition-transform duration-300 rounded-t-2xl sm:rounded-none z-50">
+    <div class="flex items-center justify-between">
+      <h2 class="text-xl font-bold">ADD LIST</h2>
+      <button id="close-cart" class="text-gray-500 hover:text-gray-700 text-2xl leading-none">&times;</button>
+    </div>
+
+    <ul id="cart-items" class="space-y-2 overflow-y-auto max-h-[55%] sm:max-h-[70%] mt-4"></ul>
+
+    <div class="mt-4 flex items-center justify-between">
+      <p class="font-semibold">Total:</p>
+      <p class="font-semibold">₦<span id="cart-total">0</span></p>
+    </div>
+
+    <button id="checkout" class="mt-4 w-full bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 text-base">Checkout</button>
+    <button id="back-to-shop" class="mt-3 w-full bg-blue-500 text-white px-4 py-3 rounded-lg hover:bg-blue-600 text-base">Back to Shop</button>
   </aside>
 
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/2348163645085?text=Hello%20I%20need%20some%20assistance%20with%20my%20order"
+     target="_blank"
+     class="fixed bottom-20 sm:bottom-4 right-4 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition transform hover:scale-110 z-50">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-7 h-7">
+      <path d="M20.52 3.48A11.86 11.86 0 0012 0C5.37 0 0 5.37 0 12a11.89 11.89 0 001.64 6.03L0 24l6.22-1.63A11.89 11.89 0 0012 24c6.63 0 12-5.37 12-12 0-3.18-1.23-6.17-3.48-8.52zM12 22a9.94 9.94 0 01-5.07-1.4l-.36-.21-3.7.97.99-3.61-.24-.37A9.94 9.94 0 012 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10z"/>
+    </svg>
+  </a>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-md border-t flex justify-around items-center py-2 sm:hidden z-50">
+    <!-- Home -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l9-9 9 9M5 10v10h14V10" />
+      </svg>
+      <span class="text-xs">Home</span>
+    </button>
+
+    <!-- Search -->
+    <button onclick="document.getElementById('search').focus()" class="flex flex-col items-center text-gray-600 hover:text-blue-500">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103 10.5a7.5 7.5 0 0013.65 6.15z" />
+      </svg>
+      <span class="text-xs">Search</span>
+    </button>
+
+    <!-- Cart -->
+    <button onclick="window.openCart()" class="flex flex-col items-center text-gray-600 hover:text-blue-500 relative">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.6 8h13.2L17 13M7 13h10" />
+      </svg>
+      <span class="text-xs">Cart</span>
+      <span id="cart-badge" class="absolute top-0 right-3 bg-red-500 text-white text-xs rounded-full px-1">0</span>
+    </button>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/2348163645085?text=Hello%20I%20need%20some%20assistance" target="_blank"
+       class="flex flex-col items-center text-green-600 hover:text-green-700">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+        <path d="M20.52 3.48A11.86 11.86 0 0012 0C5.37 0 0 5.37 0 12a11.89 11.89 0 001.64 6.03L0 24l6.22-1.63A11.89 11.89 0 0012 24c6.63 0 12-5.37 12-12 0-3.18-1.23-6.17-3.48-8.52z"/>
+      </svg>
+      <span class="text-xs">Chat</span>
+    </a>
+  </nav>
+
   <script>
-    const cartBtn = document.getElementById("cart-btn");
-    const cart = document.getElementById("cart");
+    /************** Config **************/
+    const WHATSAPP_PHONE = "2348163645085";
+
+    // Your products list (you can extend freely).
+    // IMPORTANT: We generate a stable id using name + price + image to avoid collisions.
+    const rawProducts = [
+      { name: "CIF", price: 5000, image: "./images/WhatsApp Image 2025-08-30 at 1.46.51 PM(1).jpeg" },
+      { name: "Bathroom mat", price: 6000, image: "./images/WhatsApp Image 2025-08-30 at 1.46.51 PM(2).jpeg" },
+      { name: "Toilet brush", price: 2500, image: "./images/WhatsApp Image 2025-08-30 at 1.46.52 PM(1).jpeg" },
+      { name: "Microfiber Towel", price: 2000, image: "./images/WhatsApp Image 2025-08-30 at 1.46.52 PM.jpeg" },
+      { name: "Windex", price: 7000, image: "./images/WhatsApp Image 2025-08-30 at 1.46.53 PM.jpeg" },
+      { name: "Parker", price: 2000, image: "./images/WhatsApp Image 2025-08-30 at 1.46.55 PM.jpeg" },
+      { name: "Scrubbing brush", price: 3000, image: "./images/WhatsApp Image 2025-08-30 at 1.46.56 PM.jpeg" },
+      { name: "Shaving stick one pack", price: 1500, image: "./images/WhatsApp Image 2025-08-30 at 8.19.43 PM.jpeg" },
+      { name: "Colgate toothpaste", price: 2000, image: "./images/WhatsApp Image 2025-08-30 at 8.19.49 PM.jpeg" },
+      { name: "Tissue Paper", price: 700, image: "./images/WhatsApp Image 2025-08-30 at 8.19.44 PM.jpeg" },
+      { name: "Harpic", price: 7000, image: "./images/WhatsApp Image 2025-08-30 at 1.46.57 PM.jpeg" },
+      { name: "Hypo", price: 3500, image: "./images/WhatsApp Image 2025-08-30 at 1.46.56 PM(1).jpeg" },
+      { name: "Iron sponge", price: 500, image: "./images/WhatsApp Image 2025-08-30 at 1.46.54 PM.jpeg" },
+      { name: "Bathing sponge", price: 1500, image: "./images/WhatsApp Image 2025-08-30 at 8.19.49 PM(1).jpeg" },
+      { name: "Good Mama Detergent", price: 2000, image: "./images/WhatsApp Image 2025-08-30 at 8.24.28 PM.jpeg" },
+      { name: "Strong Mop", price: 5000, image: "./images/WhatsApp Image 2025-08-30 at 8.19.51 PM.jpeg" },
+      { name: "Floss", price: 1500, image: "./images/WhatsApp Image 2025-08-30 at 8.19.50 PM.jpeg" },
+      { name: "Broom", price: 1000, image: "./images/WhatsApp Image 2025-08-30 at 8.19.39 PM.jpeg" },
+      { name: "Peg Set", price: 2500, image: "./images/WhatsApp Image 2025-08-30 at 8.19.41 PM.jpeg" },
+      { name: "Toilet Brush", price: 5000, image: "./images/WhatsApp Image 2025-08-30 at 8.19.45 PM.jpeg" },
+      { name: "Long Brush", price: 3000, image: "./images/WhatsApp Image 2025-08-30 at 8.19.40 PM.jpeg" },
+      { name: "Baby&Me", price: 700, image: "./images/WhatsApp Image 2025-08-30 at 8.19.37 PM.jpeg" },
+      { name: "Viva plus", price: 2500, image: "./images/WhatsApp Image 2025-08-30 at 8.19.52 PM(1).jpeg" },
+      { name: "MYMY Toothbrush", price: 1800, image: "./images/WhatsApp Image 2025-08-30 at 8.22.14 PM.jpeg" },
+      // Add the rest of your images/items freely…
+    ];
+
+    const makeId = (p) => btoa(encodeURIComponent(`${p.name}|${p.price}|${p.image}`)).replace(/=+$/,'');
+    const products = rawProducts.map(p => ({ ...p, id: makeId(p) }));
+    const productById = new Map(products.map(p => [p.id, p]));
+
+    /************** Elements **************/
+    const productGrid   = document.getElementById("product-grid");
+    const cartEl        = document.getElementById("cart");
+    const cartBtn       = document.getElementById("cart-btn");
+    const closeCartBtn  = document.getElementById("close-cart");
     const cartItemsList = document.getElementById("cart-items");
-    const cartCount = document.getElementById("cart-count");
-    const cartTotal = document.getElementById("cart-total");
-    const checkoutBtn = document.getElementById("checkout");
+    const cartCount     = document.getElementById("cart-count");
+    const cartBadge     = document.getElementById("cart-badge");
+    const cartTotal     = document.getElementById("cart-total");
+    const checkoutBtn   = document.getElementById("checkout");
+    const backToShopBtn = document.getElementById("back-to-shop");
 
-    let cartItems = [];
+    const searchInput   = document.getElementById("search");
+    const searchResult  = document.getElementById("search-result");
+    const searchProduct = document.getElementById("search-product");
+    const quickQty      = document.getElementById("quick-qty");
+    const orderNowBtn   = document.getElementById("order-now");
 
-    cartBtn.addEventListener("click", () => {
-      cart.classList.toggle("translate-x-full");
-    });
+    const requestProductBtn = document.getElementById("request-product");
+    const requestForm       = document.getElementById("request-form");
+    const requestInput      = document.getElementById("request-input");
+    const sendRequestBtn    = document.getElementById("send-request");
 
-    function addToCart(name, price) {
-      const item = cartItems.find(i => i.name === name);
-      if (item) {
-        item.quantity++;
-      } else {
-        cartItems.push({ name, price, quantity: 1 });
-      }
-      updateCart();
+    /************** State **************/
+    let cartItems = JSON.parse(localStorage.getItem("cart") || "[]"); // [{id,name,price,quantity}]
+    let quickOrder = null;
+
+    /************** Helpers **************/
+    const fmt = (n) => new Intl.NumberFormat("en-NG").format(n);
+
+    function saveCart() {
+      localStorage.setItem("cart", JSON.stringify(cartItems));
     }
 
-    function updateCart() {
+    function openCart() {
+      if (window.innerWidth < 640) {
+        cartEl.classList.remove("translate-y-full");
+      } else {
+        cartEl.classList.remove("translate-x-full");
+      }
+    }
+    function closeCart() {
+      if (window.innerWidth < 640) {
+        cartEl.classList.add("translate-y-full");
+      } else {
+        cartEl.classList.add("translate-x-full");
+      }
+    }
+    // expose for bottom nav onclick
+    window.openCart = openCart;
+
+    /************** Render **************/
+    function renderProducts(list = products) {
+      productGrid.innerHTML = "";
+      list.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "bg-white p-3 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center";
+        card.innerHTML = `
+          <img src="${p.image}" alt="${p.name}" class="rounded-md mb-2 w-28 h-28 sm:w-40 sm:h-40 object-cover">
+          <h2 class="text-sm sm:text-lg font-semibold text-center">${p.name}</h2>
+          <p class="text-gray-600 text-sm sm:text-base">₦${fmt(p.price)}</p>
+          <button data-action="add" data-id="${p.id}" class="mt-2 bg-blue-500 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg w-full hover:bg-blue-600 text-sm sm:text-base">
+            Add to Cart
+          </button>
+        `;
+        productGrid.appendChild(card);
+      });
+    }
+
+    function renderCart() {
       cartItemsList.innerHTML = "";
       let total = 0;
-      cartItems.forEach((item, index) => {
+      cartItems.forEach(item => {
         total += item.price * item.quantity;
         const li = document.createElement("li");
-        li.className = "flex justify-between items-center border-b pb-2";
+        li.className = "flex items-center justify-between border-b pb-2";
         li.innerHTML = `
-          <span>${item.name} x${item.quantity}</span>
-          <span class="flex items-center gap-2">
-            ₦${item.price * item.quantity}
-            <button onclick="removeFromCart(${index})" class="text-red-500 text-sm">✕</button>
-          </span>
+          <div class="flex-1 pr-2">
+            <p class="font-medium">${item.name}</p>
+            <p class="text-sm text-gray-500">₦${fmt(item.price)} each</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="px-2 py-1 border rounded" data-action="dec" data-id="${item.id}" aria-label="Decrease">−</button>
+            <span class="min-w-[2ch] text-center">${item.quantity}</span>
+            <button class="px-2 py-1 border rounded" data-action="inc" data-id="${item.id}" aria-label="Increase">+</button>
+          </div>
+          <div class="w-24 text-right">₦${fmt(item.price * item.quantity)}</div>
+          <button class="ml-2 text-red-500" data-action="remove" data-id="${item.id}" aria-label="Remove">✕</button>
         `;
         cartItemsList.appendChild(li);
       });
-      cartCount.textContent = cartItems.reduce((sum, i) => sum + i.quantity, 0);
-      cartTotal.textContent = total;
+
+      const count = cartItems.reduce((s, i) => s + i.quantity, 0);
+      cartCount.textContent = count;
+      if (cartBadge) cartBadge.textContent = count;
+      cartTotal.textContent = fmt(total);
     }
 
-    function removeFromCart(index) {
-      cartItems.splice(index, 1);
-      updateCart();
+    function updateCartUI() {
+      saveCart();
+      renderCart();
     }
+
+    /************** Cart Ops (ID based) **************/
+    function addToCartById(id, qty = 1) {
+      const p = productById.get(id);
+      if (!p) return;
+      const existing = cartItems.find(i => i.id === id);
+      if (existing) {
+        existing.quantity += qty;
+      } else {
+        cartItems.push({ id, name: p.name, price: p.price, quantity: qty });
+      }
+      updateCartUI();
+    }
+
+    function incItem(id) {
+      const it = cartItems.find(i => i.id === id);
+      if (!it) return;
+      it.quantity += 1;
+      updateCartUI();
+    }
+
+    function decItem(id) {
+      const it = cartItems.find(i => i.id === id);
+      if (!it) return;
+      it.quantity -= 1;
+      if (it.quantity <= 0) {
+        cartItems = cartItems.filter(i => i.id !== id);
+      }
+      updateCartUI();
+    }
+
+    function removeItem(id) {
+      cartItems = cartItems.filter(i => i.id !== id);
+      updateCartUI();
+    }
+
+    /************** Events **************/
+    // Initial renders
+    renderProducts(products);
+    renderCart();
+
+    // Add to cart (event delegation)
+    productGrid.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-action='add']");
+      if (!btn) return;
+      const id = btn.getAttribute("data-id");
+      addToCartById(id, 1);
+      // Optional: open cart after adding on mobile
+      if (window.innerWidth < 640) openCart();
+    });
+
+    // Cart buttons (+ / − / remove)
+    cartItemsList.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-action]");
+      if (!btn) return;
+      const id = btn.getAttribute("data-id");
+      const action = btn.getAttribute("data-action");
+      if (action === "inc") incItem(id);
+      if (action === "dec") decItem(id);
+      if (action === "remove") removeItem(id);
+    });
+
+    // Cart open/close
+    cartBtn.addEventListener("click", openCart);
+    closeCartBtn.addEventListener("click", closeCart);
+    backToShopBtn.addEventListener("click", closeCart);
+
+    // Search
+    searchInput.addEventListener("input", () => {
+      const keyword = searchInput.value.toLowerCase().trim();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(keyword));
+      renderProducts(filtered);
+
+      if (filtered.length === 1 && keyword.length > 0) {
+        quickOrder = filtered[0];
+        searchProduct.textContent = `${quickOrder.name} - ₦${fmt(quickOrder.price)}`;
+        searchResult.classList.remove("hidden");
+      } else {
+        quickOrder = null;
+        searchResult.classList.add("hidden");
+      }
+    });
+
+    // Quick order via WhatsApp
+    orderNowBtn.addEventListener("click", () => {
+      if (!quickOrder) return;
+      const qty = Math.max(1, parseInt(quickQty.value) || 1);
+      const total = quickOrder.price * qty;
+      const msg = `Hello, I would like to order:%0A- ${quickOrder.name} x${qty} = ₦${fmt(total)}`;
+      window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, "_blank");
+    });
+
+    // Request product
+    requestProductBtn.addEventListener("click", () => {
+      requestForm.classList.toggle("hidden");
+      if (!requestForm.classList.contains("hidden")) {
+        requestInput.focus();
+      }
+    });
+    sendRequestBtn.addEventListener("click", () => {
+      const text = requestInput.value.trim();
+      if (!text) return alert("Please enter a product name.");
+      const message = encodeURIComponent(`Hello, I am looking for a product that is not listed on the site: ${text}`);
+      window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${message}`, "_blank");
+    });
 
     // Checkout to WhatsApp
     checkoutBtn.addEventListener("click", () => {
@@ -360,27 +374,28 @@
         alert("Your cart is empty!");
         return;
       }
-
-//       message += `- ${item.name} x${item.quantity} = ₦${item.price * item.quantity}%0A`;
-// message += `------------------%0ATotal: ₦${total}`;
-      
-      let message = "Hello, I would like to order:%0A";
-      cartItems.forEach(item => {
-        message += `- ${item.name} x${item.quantity} = ₦${item.price * item.quantity}%0A`;
-      });
-      message += `------------------%0ATotal: ₦${cartTotal.textContent}`;
-      
-      // Replace with your WhatsApp number (with country code, no + or spaces)
-      let phone = "2349044506039";  
-      let url = `https://wa.me/${phone}?text=${message}`;
-      
-      window.open(url, "_blank");
+      let lines = cartItems
+        .map(i => `- ${i.name} x${i.quantity} = ₦${fmt(i.price * i.quantity)}`)
+        .join("%0A");
+      const total = cartItems.reduce((s, i) => s + i.price * i.quantity, 0);
+      const msg = `Hello, I would like to order:%0A${lines}%0A------------------%0ATotal: ₦${fmt(total)}`;
+      window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, "_blank");
     });
 
-    document.getElementById("back-to-shop").addEventListener("click", () => {
-      cart.classList.add("translate-x-full");
+    // Close cart when clicking outside (desktop only for comfort)
+    document.addEventListener("click", (e) => {
+      const clickingInsideCart = cartEl.contains(e.target);
+      const clickingCartBtn = cartBtn.contains(e.target);
+      if (clickingInsideCart || clickingCartBtn) return;
+      // only auto-close on desktop
+      if (window.innerWidth >= 640) closeCart();
+    });
+
+    // Keep drawer direction correct on resize
+    window.addEventListener("resize", () => {
+      // normalize to hidden on mode switch to prevent mixed transforms
+      closeCart();
     });
   </script>
-
 </body>
 </html>
