@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Shop</title>
-  <link rel="icon" href="/images/pic cleaning.jpg"> 
+  <link rel="icon" href="/images/pic-cleaning.jpg"> 
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
@@ -313,7 +313,36 @@
     });
 
     renderProducts(); renderCart();
-  </script>
+
+    // Checkout via WhatsApp
+  document.getElementById("checkout").addEventListener("click", function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
+    // Format cart items
+    let message = "🛒 Pic_Cleaning Order:\n\n";
+    let total = 0;
+
+    cart.forEach(item => {
+      message += `• ${item.name} (x${item.quantity}) - ₦${item.price * item.quantity}\n`;
+      total += item.price * item.quantity;
+    });
+
+    message += `\nTotal: ₦${total}\n\nPlease confirm my order.`;
+
+    // Encode for WhatsApp
+    let whatsappNumber = "2348163645085"; // Your business WhatsApp number
+    let whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    // Redirect to WhatsApp
+    window.open(whatsappURL, "_blank");
+  });
+</script>
+
 </body>
 </html>
 
