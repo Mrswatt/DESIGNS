@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="sticky top-0 z-50 bg-white shadow-md">
+  <!-- Navbar -->
+<nav class="sticky top-0 z-50 bg-white shadow-md">
   <!-- Top Bar -->
   <div class="bg-gray-800 p-4 shadow-lg">
     <div class="container mx-auto flex justify-between items-center">
@@ -46,8 +46,8 @@
             Blog <i class="fa fa-angle-down ml-1 text-blue-300 text-xl"></i>
           </a>
           <ul class="absolute left-0 mt-3 bg-white text-black rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transform scale-95 group-hover:scale-100 transition-all duration-300">
-            <li><a href="https://www.fb.com/l/6lp1kjrrr" class="block px-4 py-2 hover:bg-gray-200">Facebook</a></li>
-            <li><a href="https://wa.me/2348163645085?text=Hi%2C%20I%E2%80%99d%20like%20to%20book%20a%20cleaning" target="_blank"" class="block px-4 py-2 hover:bg-gray-200">WhatsApp</a></li>
+            <li><a href="https://www.Facebook.com/profile.php?id=61552277907578" class="block px-4 py-2 hover:bg-gray-200">Facebook</a></li>
+            <li><a href="https://wa.me/2348163645085?text=Hi%2C%20I%E2%80%99d%20like%20to%20book%20a%20cleaning" target="_blank" class="block px-4 py-2 hover:bg-gray-200">WhatsApp</a></li>
             <li><a href="https://www.instagram.com/pic.cleaning_services?utm_source=qr&igsh=a2fxnnzjbgxsdjlj" class="block px-4 py-2 hover:bg-gray-200">Instagram</a></li>
             <li><a href="#" class="block px-4 py-2 hover:bg-gray-200">Twitter X</a></li>
           </ul>
@@ -56,8 +56,18 @@
 
       <!-- Buttons -->
       <div class="flex items-center space-x-4">
+        <!-- Cart Button -->
+        <a href="addcart.html" class="relative">
+          <button id="cart-btn" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-full transition-all duration-300 shadow-md flex items-center">
+          <i class="fa fa-shopping-cart text-xl"></i>
+          </button>
+        <!-- Cart Count Badge -->
+          <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </a>
+
+        <!-- Plus Button with Spin Animation -->
         <a href="form.html">
-          <button class="bg-blue-300 hover:bg-blue-600 text-white px-4 py-2 rounded transition-all duration-300 shadow-md">
+          <button class="bg-blue-300 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-all duration-300 shadow-md transform hover:rotate-180">
             <i class="fa fas fa-plus text-xl"></i>
           </button>
         </a>
@@ -79,8 +89,9 @@
   </div>
 </nav>
 
+
     <!-- end of the navbar -->
-         <div class="relative min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('./images/IMG_4011.jpg');">
+         <div class="relative min-h-[80vh] bg-cover bg-center bg-no-repeat" style="background-image: url('./images/IMG_4011.jpg');">
   <!-- Dark overlay -->
   <div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center px-4">
     
@@ -120,7 +131,7 @@
         Experience the art of fine home care with our premium cleaning services.<br>
         We go beyond basic cleaning — focusing on details and customer satisfaction.
       </p>
-      <a href="https://wa.me/2348163645085?text=Hi%2C%20I%27d%20like%20to%20book%20a%20home%20cleaning" target="_blank">
+      <a href="form.html" target="_blank">
       <button class="bg-cyan-300 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-700 transition">Book Now</button>
       </a>
     </div>
@@ -345,7 +356,7 @@
           <i class="fa fa-mobile text-2xl" aria-hidden="true"></i>
         </div>
         <h3 class="text-xl font-semibold mb-2">Social Media</h3>
-        <a href="https://www.fb.com/l/6lp1kjrrr" target="_blank">
+        <a href="https://www.Facebook.com/profile.php?id=61552277907578" target="_blank">
            <button class="bg-blue-600 hover:bg-blue-700 text-white mb-2 font-semibold py-2 px-4 rounded inline-flex items-center">
            👍 Follow Us on Facebook
           </button>
@@ -380,7 +391,7 @@
                 <p class="text-sm text-gray-500 text-center mt-4"> add
                    Version 1.0.0 © 2025 Pic Cleaning Services.
                 </p>
-                <a href="https://www.fb.com/L/6Lp1kJRRR" class="text-white hover:text-blue-300 mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.Facebook.com/profile.php?id=61552277907578" class="text-white hover:text-blue-300 mx-2"><i class="fab fa-facebook"></i></a>
                 <a href="#" class="text-white hover:text-blue-300 mx-2"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/pic.cleaning_services?utm_source=qr&igsh=a2fxnnzjbgxsdjlj" class="text-white hover:text-blue-300 mx-2"><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.me/2348163645085?text=Hi%2C%20I%E2%80%99d%20like%20to%20book%20a%20cleaning" class="text-white hover:text-blue-300 mx-2"><i class="fab fab fa-whatsapp"></i></a>
@@ -389,7 +400,7 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/2348163645085?text=Hello%20I%20need%20some%20assistance%20with%20my%20order" 
+<a href="https://wa.me/2348163645085?text=Hello%20I%20need%20some%20assistance%20with%20my%20booking" 
    target="_blank" 
    class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition transform hover:scale-110 z-50">
   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-7 h-7">
@@ -412,5 +423,47 @@
       mobileMenu.classList.toggle('hidden');
     });
   </script>
+  <script>
+  // Get cart data from localStorage
+  function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let count = cart.reduce((sum, item) => sum + item.quantity, 0); // total items
+    let cartCount = document.getElementById("cart-count");
+
+    if (cartCount) {
+      cartCount.textContent = count;
+      // Animate cart icon
+      let cartBtn = document.getElementById("cart-btn");
+      if (cartBtn) {
+        cartBtn.classList.add("animate-bounce");
+        setTimeout(() => cartBtn.classList.remove("animate-bounce"), 600);
+      }
+    }
+  }
+
+  // Update on page load
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+
+  // Listen for storage changes (sync across tabs/pages)
+  window.addEventListener("storage", updateCartCount);
+
+  function addToCart(product) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let existing = cart.find(item => item.id === product.id);
+
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Update cart count immediately
+  updateCartCount();
+}
+
+</script>
+
 </body>
 </html>
